@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Samsung Pay POC -Result</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet"
+          href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.css" rel="stylesheet">
+
+    <script src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+    <style>
+        .CodeMirror { height: 750px; border: 1px solid #ddd; }
+        .CodeMirror-scroll { max-height: 750px; }
+        .CodeMirror pre { padding-left: 7px; line-height: 1.25; }
+    </style>
+</head>
+<body>
+<div class="container-fluid"><br/>
+    <h2>Payment Result</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <h5>XML Request sent</h5>
+        </div>
+        <div class="col-md-6">
+            <h5>XML Response (Authorization)</h5>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <textarea rows="50" cols="100" style="border: none" id="authRequest" th:text="${xmlRequest}"></textarea>
+        </div>
+        <div class="col-md-6">
+            <textarea rows="50" cols="100" style="border: none" id="authResponse" th:text="${xmlResponse}"></textarea>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/mode/xml/xml.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/addon/fold/xml-fold.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/addon/edit/matchtags.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/addon/edit/closetag.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/addon/hint/xml-hint.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/addon/selection/active-line.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var textarea = $("#authRequest");
+        var textareaResponse = $("#authResponse");
+
+        CodeMirror.fromTextArea(textarea[0], {
+            indentUnit: 4,
+            lineWrapping: false,
+            lineNumbers: true,
+            cursorScrollMargin: 30,
+            matchTags: {bothTags: true},
+            extraKeys: {"Ctrl-J": "toMatchingTag"},
+            autoCloseTags: true,
+            styleActiveLine: true,
+            viewportMargin: Infinity,
+            gutters: ["gutter", "CodeMirror-linenumbers"],
+            readonly: true
+        });
+
+        CodeMirror.fromTextArea(textareaResponse[0], {
+            indentUnit: 4,
+            lineWrapping: true,
+            lineNumbers: true,
+            cursorScrollMargin: 30,
+            matchTags: {bothTags: true},
+            extraKeys: {"Ctrl-J": "toMatchingTag"},
+            autoCloseTags: true,
+            styleActiveLine: true,
+            viewportMargin: Infinity,
+            gutters: ["gutter", "CodeMirror-linenumbers"],
+            readonly: true
+        });
+    });
+</script>
+
+</body>
+</html>

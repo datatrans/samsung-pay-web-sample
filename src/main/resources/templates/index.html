@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Samsung Pay Web Sample</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet"
+          href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+
+    <link rel="stylesheet"
+         th:href="@{/css/main.css}" />
+
+    <script src="webjars/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/main.js}"></script>
+    <script type="text/javascript" th:src="@{/js/pc_gsmpi_web_sdk.js}"></script>
+
+</head>
+<body>
+<div class="container"><br/>
+    <h2>Samsung Pay Web Sample</h2>
+    <div class="row mb-4">
+        <div class="col-md-4 mb-2">
+            <form>
+                <div class="form-group">
+                    <label for="amount" >Amount</label>
+                    <input type="number" min="1" step="1" class="form-control col-md-2" id="amount" placeholder="1">
+                </div>
+                <div class="form-group">
+                    <label for="currency">Currency</label>
+                    <input maxlength="3" type="text" class="form-control col-md-3" id="currency" placeholder="CHF, EUR or USD">
+                </div>
+                <div class="form-group">
+                    <img onclick="pay()" th:src="@{/img/samsung_pay.png}" class="pay-button img-responsive" />
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4 mb-2">
+            <div class="status">
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+
+<script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+
+    var callbackBaseUrl = [[${callbackBaseUrl}]];
+    var serviceId = [[${serviceId}]];
+
+    /*]]>*/
+</script>
