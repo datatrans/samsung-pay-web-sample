@@ -34,7 +34,7 @@ referenceId.
    Production Server)
 
 #### Datatrans related
-1. Datatrans merchant ID (Get one [here](https://www.datatrans.ch/en/technics/test-account))
+1. Datatrans merchant ID (Get one [here](https://www.datatrans.ch/))
 2. Merchant needs to be configured to make XML-calls
 3. Merchant needs to be enabled for Samsung Pay
 
